@@ -1,0 +1,57 @@
+<div class="uk-width-expand">
+    <table class="uk-table uk-table-striped uk-table-hover uk-table-middle uk-margin-remove">
+        <thead>
+            <tr>
+                <th class="pk-table-width-minimum">
+                    <input v-check-all:selected="{ selector: 'input[name=name]' }" class="uk-checkbox" type="checkbox">
+                </th>
+                <th>{{ 'Name' | trans }}</th>
+                <th class="pk-table-width-60 uk-text-right">{{ 'Size' | trans }}</th>
+                <th class="pk-table-width-150">{{ 'Modified' | trans }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="folder in filterBy(searched, 'application/folder', 'mime')" :key="folder.name + folder.mime" class="uk-visible-toggle" :class="{'uk-active': isSelected(folder.name)}" @click.prevent="toggleSelect(folder.name)">
+                <td class="uk-table-shrink"><input class="uk-checkbox" type="checkbox" name="name" :value="folder.name" v-model="selected" @click.stop></td>
+                <td class="pk-table-min-width-200">
+                    <div class="uk-grid-small uk-flex-middle uk-flex-nowrap" uk-grid>
+                        <div>
+                            <div class="pk-table-width-60 uk-position-relative">
+                                <a @click.stop="setPath(folder.path)" class="uk-position-center"><span uk-icon="folder" ratio="2"></span></a>
+                            </div>
+                        </div>
+                        <div>
+                            <a @click.stop="setPath(folder.path)" class="uk-link-reset" v-clamp:middle="1">{{ folder.name }}</a>
+                        </div>
+                    </div>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            <tr v-for="file in filterBy(searched, 'application/file', 'mime')" :key="file.url + file.mime" :class="{'uk-active': isSelected(file.name)}" @click.prevent="handler(file)">
+                <td class="uk-table-shrink"><input class="uk-checkbox" type="checkbox" name="name" :value="file.name" v-model="selected" @click.stop></td>
+                <td class="pk-table-min-width-200">
+                    <div class="uk-grid-small uk-flex-middle uk-flex-nowrap" uk-grid>
+                        <div>
+                            <div class="pk-table-width-60 uk-position-relative">
+                                <div class="uk-inline-clip uk-position-center" v-if="isImage(file.path)">
+                                    <span class="uk-background-contain uk-position-cover" v-lazy-background.meta="$url(file.url)"></span>
+                                    <canvas class="uk-responsive-width uk-display-block" width="100" height="56"></canvas>
+                                </div>
+                                <div class="uk-position-center" :uk-icon="UKIcon(file.name)" ratio="2" v-else></div>
+                            </div>
+                        </div>
+                        <div>
+                            <span v-clamp:middle="1">{{ file.name }}</span>
+                        </div>
+                    </div>
+                </td>
+                <td class="pk-table-width-60 uk-text-right uk-text-nowrap">{{ file.size }}</td>
+                <td class="pk-table-width-150 uk-text-nowrap">{{ file.lastmodified | relativeDate }}</td>
+            </tr>
+            <tr></tr>
+        </tbody>
+
+    </table>
+</div>

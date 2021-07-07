@@ -1,0 +1,558 @@
+/* ========================================================================
+   Pagekit
+ ========================================================================== */
+
+[v-cloak] {
+    display: none;
+}
+
+/* Sidebar
+========================================================================== */
+
+.pk-width-sidebar,
+.pk-width-content {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* Tablet and bigger */
+@media (min-width: @breakpoint-medium) {
+    /*
+     * Width
+     */
+
+    .pk-width-sidebar {
+        width: (200px + @global-gutter);
+    }
+    .pk-width-content {
+        width: ~"calc(100% - @{global-gutter} - 200px)";
+    }
+}
+
+/*
+ * Large Gutter
+ */
+
+/* Desktop and bigger */
+@media (min-width: @breakpoint-large) {
+    /*
+     * Gutter
+     */
+
+    /* Horizontal */
+    .pk-grid-large {
+        margin-left: -40px;
+    }
+    .pk-grid-large > * {
+        padding-left: 40px;
+    }
+
+    /* Vertical */
+    .pk-grid-large + .pk-grid-large,
+    .pk-grid-large > .uk-grid-margin,
+    .pk-grid-large > * > .uk-panel + .uk-panel {
+        margin-top: 40px;
+    }
+
+    /*
+     * Width
+     */
+
+    .pk-width-sidebar {
+        width: (250px + 40px);
+    }
+    .pk-width-content {
+        width: ~"calc(100% - 290px)";
+    }
+}
+
+/* Large screen and bigger */
+@media (min-width: @breakpoint-xlarge) {
+    /*
+     * Gutter
+     */
+
+    /* Horizontal */
+    .pk-grid-large {
+        margin-left: -50px;
+    }
+    .pk-grid-large > * {
+        padding-left: 50px;
+    }
+
+    /* Vertical */
+    .pk-grid-large + .pk-grid-large,
+    .pk-grid-large > .uk-grid-margin,
+    .pk-grid-large > * > .uk-panel + .uk-panel {
+        margin-top: 50px;
+    }
+
+    /*
+     * Width
+     */
+
+    .pk-width-sidebar {
+        width: (250px + 50px);
+    }
+    .pk-width-content {
+        width: ~"calc(100% - 300px)";
+    }
+
+    .pk-width-sidebar-large .pk-width-sidebar {
+        width: (270px + 50px);
+    }
+    .pk-width-sidebar-large .pk-width-content {
+        width: ~"calc(100% - 320px)";
+    }
+}
+
+/* Modifier: Side Nav Large (System: Settings + Info, Site: Settings)
+========================================================================== */
+
+.pk-nav-large > li > a {
+    padding: 15px 20px;
+}
+
+.pk-nav-large > li:hover > a,
+.pk-nav-large > li:focus > a,
+.pk-nav-large > li.uk-active > a {
+    background-color: @theme-background-menu-active-color;
+}
+
+/* Side Nav Sortable (Users: Roles)
+========================================================================== */
+
+.pk-sortable-dragged-list > * {
+    display: block;
+    padding: 15px 20px !important;
+    background: #f2f2f8;
+    color: @global-color;
+    font-size: 0.875rem;
+}
+
+/* Panel Sortable (Dashboard)
+========================================================================== */
+
+.pk-sortable {
+    padding: 0;
+    list-style: none;
+}
+
+.pk-sortable > li + li {
+    margin-top: @grid-gutter-vertical;
+}
+
+/* Modifier: Search
+========================================================================== */
+
+.pk-search {
+    border-left: 1px solid darken(@global-border, 5%);
+    /* 1 */
+    position: relative;
+    z-index: 0;
+    margin-left: 20px;
+}
+
+.pk-search > .uk-search-input {
+    border: 0;
+    height: 40px;
+    background: transparent;
+    margin-left: 15px;
+    font-size: 1.5rem
+}
+
+.pk-search > .uk-search-icon {
+    margin-left: 10px;
+}
+
+.pk-search > .uk-search-icon > svg {
+    width: 24px;
+}
+
+// .pk-search > .uk-search-icon:not(.uk-search-icon-flip) + .uk-search-input {
+//     padding-left: 45px;
+// }
+
+.uk-modal-header .pk-search > .uk-search-icon > svg {
+    width: 20px;
+}
+.uk-modal-header .pk-search > .uk-search-input {
+    font-size: inherit;
+}
+
+/* Modifier: Badge
+==========================================================================
+*/
+
+.pk-badge-justify {
+    text-align: center;
+    box-sizing: border-box;
+    width: 100px;
+}
+
+/* SVG Icons
+ ========================================================================== */
+
+[class*="pk-icon-"] {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    vertical-align: middle;
+}
+
+.pk-icon-contain {
+    background-size: contain;
+}
+
+[class*="pk-icon-circle"] {
+    width: 12px;
+    height: 12px;
+    border-radius: 50px;
+    background: @global-muted-color;
+}
+
+.pk-icon-circle-primary {
+    background: @global-primary-background;
+}
+.pk-icon-circle-success {
+    background: @theme-success-background;
+}
+.pk-icon-circle-danger {
+    background: @global-danger-background;
+}
+.pk-icon-circle-warning {
+    background: @global-warning-background;
+}
+
+/*
+ * Icon Large
+ */
+
+[class*="pk-icon-large-"] {
+    width: 25px;
+    height: 25px;
+}
+
+/*
+ * Schedule icon (Blog)
+ */
+
+[uk-icon="schedule"] .uk-badge {
+    min-width: 12px;
+    height: 12px;
+    padding: 0;
+    border: 2px solid #fff;
+    bottom: -4px;
+    right: -4px;
+    z-index: 1;
+}
+
+/* Panel Badge Modifiers (Image Picker Fields + System: Themes)
+========================================================================== */
+
+/*
+ * Background Modifier
+ */
+
+.pk-panel-badge {
+    padding: 7px 10px;
+    background: #fff;
+}
+
+/*
+ * Position Modifier
+ */
+
+/* Text Large (Dashboard)
+========================================================================== */
+
+.pk-text-large {
+    font-family: @base-heading-font-family;
+    font-weight: 300;
+    font-size: @base-h2-font-size;
+    line-height: @base-h2-line-height;
+}
+
+.pk-text-xlarge {
+    font-family: @base-heading-font-family;
+    font-size: 2.875rem;
+    line-height: 1.2;
+    font-weight: 300;
+}
+
+/* Modifier Table Large` (Blog: Comments)
+========================================================================== */
+
+.pk-table-large td {
+    padding-top: 28px;
+    padding-bottom: 28px;
+}
+
+/* Modifier Table Collapse (Site: Pages: In Nestable)
+========================================================================== */
+
+.pk-table-collapse {
+    padding-left: 6px !important;
+    padding-right: 0 !important;
+}
+
+/* Table Modifiers
+========================================================================== */
+
+/*
+ * Make cell as small as possible
+ */
+
+.pk-table-width-minimum {
+    width: 1px;
+}
+
+/*
+ * Useful width classes for table cells
+ * Text will wrap automatically, a long string will expand the cell
+ */
+
+.pk-table-width-60 {
+    width: 60px;
+}
+
+.pk-table-width-100 {
+    width: 120px;
+    white-space: nowrap;
+    min-width: 120px;
+}
+
+.pk-table-width-150 {
+    width: 150px;
+}
+.pk-table-width-200 {
+    width: 200px;
+}
+
+/*
+ * Prevent a long string from expanding the cell
+ * `min-width` is needed to prevent cells from collapsing
+ */
+
+.pk-table-text-break {
+    word-break: break-word;
+}
+
+.pk-table-min-width-100 {
+    min-width: 100px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+.pk-table-min-width-150 {
+    min-width: 150px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+.pk-table-min-width-200 {
+    min-width: 200px;
+}
+.pk-table-min-width-300 {
+    min-width: 300px;
+}
+.pk-table-min-width-400 {
+    min-width: 400px;
+}
+
+/*
+ * Need when `uk-text-truncate` is used
+ */
+
+.pk-table-max-width-100 {
+    max-width: 100px;
+}
+.pk-table-max-width-150 {
+    max-width: 150px;
+}
+
+/* Modifier Table Order
+========================================================================== */
+
+.pk-table-order:hover {
+    cursor: pointer;
+}
+
+.pk-table-order:hover,
+.pk-table-order.uk-active {
+    color: #666;
+}
+
+/*
+ * Icon
+ */
+
+.pk-table-order [class*="pk-icon-"] {
+    opacity: 0.3;
+}
+
+.pk-table-order:hover [class*="pk-icon-"],
+.pk-table-order.uk-active [class*="pk-icon-"] {
+    opacity: 1;
+}
+
+.pk-table-fake:not(.pk-table-fake-header) [class*="pk-table-width"],
+.pk-table-fake:not(.pk-table-fake-header) [class*="pk-table-min-width"] {
+    font-size: 0.9375rem;
+}
+
+/* Filter
+========================================================================== */
+
+.pk-filter:hover > * {
+    color: #666;
+}
+
+.pk-filter.uk-active > * {
+    color: #666;
+    font-weight: bold;
+}
+
+/* Table Fake (Site: Pages + Widgets)
+========================================================================== */
+
+.pk-table-fake {
+    display: table;
+    width: 100%;
+    padding: 0;
+}
+
+.pk-table-fake > div {
+    display: table-cell;
+    padding: 16px 12px;
+    vertical-align: middle;
+}
+
+/*
+ * Imitate table header
+ */
+
+.pk-table-fake-header > div {
+    font-size: round((@global-font-size * 0.875));
+    text-transform: uppercase;
+    font-weight: normal;
+    color: @global-muted-color;
+}
+
+.pk-table-fake-border {
+    box-shadow: inset 0 -1px 0 @global-border;
+}
+
+.pk-table-fake-nestable-padding {
+    padding-left: 28px !important;
+}
+
+/*
+ * Fix height
+ */
+
+.pk-table-fake .uk-form-select {
+    vertical-align: top;
+}
+
+/* Overflow Container (Finder: Thumbnail View)
+ ========================================================================== */
+
+.tm-overflow-container {
+    margin: -5px;
+    padding: 5px;
+}
+
+/* Panel Background (Dashboard)
+ ========================================================================== */
+
+.pk-panel-background {
+    background: url("../images/dashboard-location.jpg") 0 0 no-repeat; //@global-primary-background url("../images/dashboard-location.jpg") 0 0 no-repeat;
+    background-size: cover;
+}
+
+/* Form Link (Link Picker)
+ ========================================================================== */
+
+.pk-editor > .uk-switcher {
+    background: @form-background;
+}
+
+.pk-editor.split .uk-switcher {
+    border: 1px solid #e5e5e5;
+}
+
+.pk-editor.split .uk-switcher > li {
+    margin: -1px;
+}
+
+/* SVG Loader
+ ========================================================================== */
+
+@radius: 13px;
+@size: 15px; // A little larger to prevent overflow clipping
+@offset: round(2 * 3.141 * @radius);
+@duration: 1.4s;
+
+.pk-loader {
+    vertical-align: middle;
+    animation: pk-loader-rotate @duration linear infinite;
+}
+
+/*
+ * Group
+ * Only needed because `transform-origin: center` is not working in Firefox
+ */
+
+.pk-loader > * {
+    transform: translate(@size, @size);
+}
+
+/*
+ * Circle
+ */
+
+.pk-loader > * > * {
+    stroke-dasharray: @offset;
+    stroke-dashoffset: 0;
+    animation: pk-loader-dash @duration ease-in-out infinite,
+        pk-loader-color (@duration*4) ease-in-out infinite;
+    stroke-linecap: round;
+}
+
+@keyframes pk-loader-rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(270deg);
+    }
+}
+
+@keyframes pk-loader-dash {
+    0% {
+        stroke-dashoffset: @offset;
+    }
+    50% {
+        stroke-dashoffset: @offset / 4;
+        transform: rotate(135deg);
+    }
+    100% {
+        stroke-dashoffset: @offset;
+        transform: rotate(450deg);
+    }
+}
+
+@keyframes pk-loader-color {
+    0% {
+        stroke: @global-link-hover-color;
+    }
+    50% {
+        stroke: @global-link-hover-color;
+    }
+    100% {
+        stroke: @global-link-hover-color;
+    }
+}
